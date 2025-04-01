@@ -11,10 +11,8 @@ git add .
 # Create initial commit
 git commit -m "Initial commit: SQL Query Generator with AI agent"
 
-# Add GitHub remote (replace with your repository URL)
-echo "Please enter your GitHub repository URL:"
-read repo_url
-git remote add origin $repo_url
+# Add GitHub remote with specific repository name
+git remote add origin https://github.com/DIVM2005/SQL_1.git
 
 # Push to GitHub
 git push -u origin main
