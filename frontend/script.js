@@ -5,14 +5,14 @@ let currentTables = [];
 let currentColumns = {};
 
 // API Base URL
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'http://localhost:5002';
 
 // DOM Elements
 const pages = {
-    home: document.getElementById('homePage'),
-    connection: document.getElementById('connectionPage'),
-    generator: document.getElementById('generatorPage'),
-    history: document.getElementById('historyPage')
+    home: document.getElementById('home'),
+    connection: document.getElementById('connection'),
+    generator: document.getElementById('generator'),
+    history: document.getElementById('history')
 };
 
 const navLinks = {
@@ -57,13 +57,13 @@ async function checkBackendHealth() {
 // Set up event listeners
 function setupEventListeners() {
     // Database connection form
-    document.getElementById('connectForm').addEventListener('submit', handleConnection);
+    document.getElementById('connectionForm').addEventListener('submit', handleConnection);
     
     // Query generation form
     document.getElementById('queryForm').addEventListener('submit', handleQueryGeneration);
     
     // Clear history button
-    document.getElementById('clearHistoryButton').addEventListener('click', clearHistory);
+    document.getElementById('clearHistory').addEventListener('click', clearHistory);
 }
 
 // Initialize navigation
@@ -111,10 +111,11 @@ async function handleConnection(event) {
     
     const formData = new FormData(event.target);
     const connectionData = {
+        db_type: "postgresql",
         host: formData.get('host'),
         port: formData.get('port'),
-        database: formData.get('database'),
-        user: formData.get('user'),
+        db_name: formData.get('database'),
+        user: formData.get('username'),
         password: formData.get('password')
     };
     
@@ -131,7 +132,7 @@ async function handleConnection(event) {
         
         if (response.ok) {
             isConnected = true;
-            currentDatabase = connectionData.database;
+            currentDatabase = connectionData.db_name;
             currentTables = data.tables;
             showSuccess('Successfully connected to database');
             navigateTo('generator');
@@ -150,7 +151,7 @@ async function handleQueryGeneration(event) {
     
     const formData = new FormData(event.target);
     const queryData = {
-        question: formData.get('naturalLanguage')
+        question: formData.get('query')
     };
     
     try {
@@ -189,7 +190,7 @@ async function handleQueryGeneration(event) {
 
 // Update connection status banner
 function updateConnectionStatusBanner() {
-    const banner = document.getElementById('connectionStatusBanner');
+    const banner = document.getElementById('connectionStatus');
     if (isConnected) {
         banner.textContent = `Connected to database: ${currentDatabase}`;
         banner.classList.add('connected');
@@ -202,7 +203,7 @@ function updateConnectionStatusBanner() {
 // Load query history
 function loadHistory() {
     const history = JSON.parse(localStorage.getItem('queryHistory') || '[]');
-    const historyList = document.getElementById('historyList');
+    const historyList = document.getElementById('queryHistory');
     
     if (history.length === 0) {
         historyList.innerHTML = '<div class="empty-history">No query history available</div>';
