@@ -11,12 +11,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Chat from './pages/Chat';
-import DatabaseConnection from './pages/DatabaseConnection';
-import ExecutionResult from './pages/ExecutionResult';
 import History from './pages/History';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
-import { AgentProvider } from './context/AgentContext';
 
 // Create theme with grey, white, and black colors
 const theme = createTheme({
@@ -58,57 +55,39 @@ function App() {
         <AuthProvider>
           <LoadingProvider>
             <ToastProvider>
-              <AgentProvider>
-                <Router>
-                  <Header />
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route
-                      path="/chat"
-                      element={
-                        <ProtectedRoute>
-                          <Chat />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/database"
-                      element={
-                        <ProtectedRoute>
-                          <DatabaseConnection />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/result"
-                      element={
-                        <ProtectedRoute>
-                          <ExecutionResult />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/history"
-                      element={
-                        <ProtectedRoute>
-                          <History />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/profile"
-                      element={
-                        <ProtectedRoute>
-                          <Profile />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </Router>
-              </AgentProvider>
+              <Router>
+                <Header />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route
+                    path="/chat"
+                    element={
+                      <ProtectedRoute>
+                        <Chat />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/history"
+                    element={
+                      <ProtectedRoute>
+                        <History />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/profile"
+                    element={
+                      <ProtectedRoute>
+                        <Profile />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Router>
             </ToastProvider>
           </LoadingProvider>
         </AuthProvider>
