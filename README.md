@@ -27,11 +27,12 @@ A web application that converts natural language descriptions into SQL queries. 
 
 ```
 sql-query-generator/
-├── draft1fast.py     # Backend server
-├── index.html        # Frontend HTML
-├── styles.css        # CSS styles
-├── script.js         # Frontend JavaScript
-├── requirements.txt  # Python dependencies
-├── .env.example      # Template for environment variables
-└── .env              # Your actual environment variables (not in repo)
+├── frontend/         # Frontend files
+│   ├── index.html   # Main HTML file
+│   ├── styles.css   # CSS styles
+│   └── script.js    # JavaScript functionality
+├── draft1fast.py    # Backend server
+├── requirements.txt # Python dependencies
+├── .env.example     # Template for environment variables
+└── .env             # Your actual environment variables (not in repo)
 ``` 
