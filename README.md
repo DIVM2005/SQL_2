@@ -31,8 +31,11 @@ sql-query-generator/
 │   ├── index.html   # Main HTML file
 │   ├── styles.css   # CSS styles
 │   └── script.js    # JavaScript functionality
-├── draft1fast.py    # Backend server
-├── requirements.txt # Python dependencies
+├── backend/         # Backend files
+│   ├── draft1fast.py    # Backend server
+│   └── requirements.txt # Python dependencies
+├── scripts/         # Utility scripts
+│   └── upload_to_github.sh # GitHub upload script
 ├── .env.example     # Template for environment variables
 └── .env             # Your actual environment variables (not in repo)
 ``` 
