@@ -1,83 +1,107 @@
 # SQL Query Generator
 
-A web application that generates SQL queries from natural language descriptions using AI. The application features a clean, modern interface with a grey, black, and white color scheme.
+A web application that converts natural language descriptions into SQL queries. The application features a clean, modern interface with a grey, black, and white color scheme.
 
 ## Features
 
-- **Natural Language to SQL**: Convert plain English descriptions into SQL queries
+- **Natural Language Processing**: Convert plain English descriptions into SQL queries
 - **Database Connection**: Connect to PostgreSQL databases
 - **Query History**: Keep track of generated queries with timestamps
 - **Modern UI**: Clean and responsive interface with a professional color scheme
 
-## Tech Stack
+## Quick Start Guide
 
-- **Frontend**:
-  - HTML5
-  - CSS3
-  - Vanilla JavaScript
-  - Modern grey, black, and white theme
+### Prerequisites
+1. Install Python (version 3.8 or higher)
+   - Download from: https://www.python.org/downloads/
+   - During installation, make sure to check "Add Python to PATH"
 
-- **Backend**:
-  - Python
-  - FastAPI
-  - Langchain with Groq
-  - PostgreSQL support
+2. Install PostgreSQL
+   - Download from: https://www.postgresql.org/download/
+   - Remember the password you set during installation
 
-## Prerequisites
+3. Get a GROQ API Key
+   - Sign up at: https://console.groq.com/
+   - Create an API key in your account dashboard
 
-- Python 3.8 or higher
-- Node.js 14 or higher
-- PostgreSQL database (for connecting to your data)
+### Installation Steps
 
-## Installation
+1. **Download the Project**
+   - Click the green "Code" button on this page
+   - Select "Download ZIP"
+   - Extract the ZIP file to a folder on your computer
 
-1. Clone the repository:
-   ```bash
-   git clone <your-repo-url>
-   cd sql-query-generator
-   ```
+2. **Set Up Environment Variables**
+   - Rename `.env.example` to `.env`
+   - Open `.env` in a text editor
+   - Replace `your_groq_api_key_here` with your actual GROQ API key
+   - Optionally, update the database configuration if you want to use default values
 
-2. Install Python dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+3. **Install Required Python Packages**
+   - Open Command Prompt (Windows) or Terminal (Mac/Linux)
+   - Navigate to the project folder:
+     ```
+     cd path/to/extracted/folder
+     ```
+   - Install required packages:
+     ```
+     pip install -r requirements.txt
+     ```
 
-3. Set up environment variables:
-   Create a `.env` file in the root directory and add:
-   ```
-   GROQ_API_KEY=your_groq_api_key
-   ```
+### Running the Application
 
-## Running the Application
+1. **Start the Backend Server**
+   - Open a new Command Prompt/Terminal window
+   - Navigate to the project folder
+   - Run:
+     ```
+     python draft1fast.py
+     ```
+   - You should see a message that the server is running on port 5000
 
-1. Start the backend server:
-   ```bash
-   python draft1fast.py
-   ```
-   The backend will run on `http://localhost:5000`
+2. **Start the Frontend Server**
+   - Open another Command Prompt/Terminal window
+   - Navigate to the project folder
+   - Run:
+     ```
+     python -m http.server 3000
+     ```
+   - You should see a message that the server is running on port 3000
 
-2. Start the frontend server:
-   ```bash
-   python -m http.server 3000
-   ```
-   Access the application at `http://localhost:3000`
+3. **Access the Application**
+   - Open your web browser
+   - Go to: http://localhost:3000
+   - You should see the SQL Query Generator interface
 
-## Usage
+### Using the Application
 
-1. **Connect to Database**:
-   - Navigate to the Connection page
-   - Enter your database credentials
+1. **Connect to Database**
+   - Click on "Connection" in the navigation menu
+   - Enter your PostgreSQL database details:
+     - Host: localhost
+     - Port: 5432
+     - Database: your_database_name
+     - Username: postgres
+     - Password: your_postgres_password
    - Click "Connect"
 
-2. **Generate Queries**:
-   - Go to the Generator page
-   - Enter your query description in natural language
+2. **Generate Queries**
+   - Click on "Generator" in the navigation menu
+   - Type your query in natural language (e.g., "Show all users who registered this month")
    - Click "Generate Query"
    - View the generated SQL query
 
-3. **View History**:
-   - Visit the History page to see all previously generated queries
-   - Clear history as needed
+3. **View History**
+   - Click on "History" in the navigation menu
+   - See all your previously generated queries
+   - Clear history if needed
+
+## Troubleshooting
+
+- **"ModuleNotFoundError"**: Make sure you've installed all requirements using `pip install -r requirements.txt`
+- **"Port already in use"**: Close other applications using ports 3000 or 5000
+- **"Cannot connect to database"**: Verify your PostgreSQL credentials and make sure PostgreSQL is running
+- **"API key not found"**: Make sure you've created a `.env` file with your GROQ API key
 
 ## Project Structure
 
@@ -87,16 +111,10 @@ sql-query-generator/
 ├── index.html        # Frontend HTML
 ├── styles.css        # CSS styles
 ├── script.js         # Frontend JavaScript
-└── requirements.txt  # Python dependencies
+├── requirements.txt  # Python dependencies
+├── .env.example      # Template for environment variables
+└── .env              # Your actual environment variables (not in repo)
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## License
 
